@@ -1,0 +1,42 @@
+class Solution:
+    
+    def isValid(self, s: str) -> bool:
+        lis = []
+        open = ['(','{','[']
+        closed = [')','}',']']
+        for x in s:
+            if x in open:
+                lis.append(x)
+            else:
+                if (x in closed) and (len(lis)!= 0):
+                    if x == ")":
+                        if lis.pop() == '(':
+                            continue
+                        else:
+                            return False
+                    elif x == "}":
+                        if lis.pop() == '{':
+                            continue
+                            
+                        else:
+                            return False
+                            
+                    elif x == "]":
+                        if lis.pop() == '[':
+                            continue
+                            
+                        else:
+                            return False
+                
+                else:
+                    return False
+        if len(lis) == 0:
+            
+            return True  
+        else:
+            return False
+                    
+                        
+                
+                
+        
