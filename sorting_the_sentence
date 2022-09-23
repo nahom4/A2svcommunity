@@ -1,0 +1,14 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        new = s.split()
+        s = s.split()
+
+
+        for x in s:
+            print(x)
+            print(int(x[-1]))
+            new[int(x[-1])-1] = x[:-1]
+            print(new)
+
+        new = ' '.join(new)
+        return new
