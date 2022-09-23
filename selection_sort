@@ -1,0 +1,27 @@
+#User function Template for python3
+
+class Solution: 
+    def select(self, arr, i):
+        # code here 
+        least = arr[i]
+        index = 0
+        for x in range(i,len(arr)):
+            if arr[x] <= least:
+                least = arr[x]
+                index = x
+                
+        return least,index
+    
+    def selectionSort(self, arr,n):
+        #code here
+        
+        for x in range(len(arr)):
+            least,index = self.select(arr,x)
+            value = arr[x] 
+            arr[index] = value
+            arr[x] = least
+            
+            
+            
+        return arr
+        
