@@ -1,0 +1,23 @@
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        lis = []
+        for x in s:
+            if x != ')':
+                lis.append(x)
+                
+            else:
+                word = []
+                while True:
+                    if lis[-1] != '(':
+                        word.append(lis.pop())
+                        
+                    else:
+                        lis.pop()
+                        for x in word:
+                            lis.append(x)
+                            
+                        break
+                        
+            if len(lis) == 0:
+                break
+        return ''.join(lis)   
