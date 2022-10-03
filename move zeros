@@ -6,12 +6,17 @@ class Solution:
         """
         for x in range(len(nums)):
             
-            if nums[x] != 0:
-                
-                while nums[x-1] == 0 and not(x ==0):
-                    nums[x-1] = nums[x]
-                    nums[x] =0
-                    x = x-1
-                    
+            if nums[x] == 0:
+                z=x
+                var = nums[z]
+                for y in range(x,len(nums)-1):
+                    if nums[y+1] == 0:
+
+                        continue
+                  
+                    nums[z] = nums[y+1]
+                    nums[y+1]=var
+                    z+=1
+
                 
                     
