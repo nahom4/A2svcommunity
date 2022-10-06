@@ -1,0 +1,21 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        #sliding window technique
+        start = 0
+        
+        mx= 0
+        if len(s) == 0:return 0
+        if len(s) == 1: return 1 
+        for end in range (1,len(s)):
+            
+        
+            if s[end] in s[start:end]:
+                start = s.find(s[end],start) +1
+                
+            else:    
+                
+                mx = max(mx,len(s[start:end+1]))
+        if mx == 0:
+            return 1
+        return mx
