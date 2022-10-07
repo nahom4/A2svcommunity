@@ -1,0 +1,32 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        dic = dict()
+        for x in p:
+            dic[x] = dic.get(x,0) + 1
+
+        dis = len(dic)
+        k = len(p)
+        i,j = 0,0
+        arr = []
+
+
+        while j < len(s):
+            if s[j] in dic.keys():
+                dic[s[j]] -= 1
+                if dic[s[j]] == 0: dis-= 1
+
+            if(j - i + 1 < k): j += 1
+            else:
+                if dis == 0: arr.append(i)
+
+                if s[i] in dic.keys(): 
+                    dic[s[i]] += 1
+                    
+                    if(dic[s[i]] == 1): dis += 1
+              
+                i += 1
+                j += 1
+                
+
+
+        return arr      
