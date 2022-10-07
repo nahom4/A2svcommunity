@@ -1,0 +1,26 @@
+class Solution:
+    def totalFruit(self, fruits) -> int:
+        start = 0
+        container = dict()
+        mx = 0
+        
+        for x in range(len(fruits)):
+            if len(fruits) <= 2:
+                return len(fruits)
+
+            container[fruits[x]] = container.get(fruits[x],0) +1
+            while len(container) > 2 and start < len(fruits):
+                container[fruits[start]]-=1
+                if container[fruits[start]] == 0:
+                    container.pop(fruits[start])
+                start += 1
+
+
+            
+
+            
+
+
+            mx = max(mx, x-start +1)
+
+        return mx
