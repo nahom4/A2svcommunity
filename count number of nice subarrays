@@ -1,0 +1,17 @@
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        for x in range(len(nums)):
+            if nums[x]%2 == 0:
+                nums[x] = 0
+            else:
+                nums[x] = 1
+        nice = 0
+        mp = {0:1}
+        cur = 0
+        for x in range(len(nums)):
+            cur+= nums[x]
+            dif = cur - k
+            nice += mp.get(dif,0)
+            mp[cur] = mp.get(cur,0) +1
+        
+        return nice
