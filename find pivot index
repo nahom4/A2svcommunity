@@ -1,0 +1,14 @@
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        #let's prepare a prefix sum first
+        prefix = [0]
+        for x in nums:
+            prefix.append(prefix[-1]+x)
+        prefix.remove(0)
+        print(prefix)
+        #sum to the left of i is prefix[i] -nums[i] and to the right is prefix[-1]     
+        for x in range(len(nums)):
+            if prefix[x] - nums[x] == prefix[-1] - prefix[x]:
+                return x
+
+        return -1
