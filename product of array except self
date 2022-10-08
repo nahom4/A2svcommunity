@@ -1,0 +1,28 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+
+        
+        prefix = [1]
+        sufix = [1]
+        ans = []
+        for x in range(len(nums)):
+            prefix.append(nums[x] * prefix[-1])
+            sufix.append(nums[len(nums) - 1 - x] * sufix[-1])
+
+        prefix.remove(1)
+        sufix.remove(1)
+        
+        
+
+        for x in range(len(nums)):
+            
+            if x - 1 >= 0 and (len(nums) - 2 - x) >= 0:
+                
+                
+                ans.append(prefix[x - 1] * sufix[len(nums) - x -2])
+                
+        
+        ans = [sufix[-2]]  + ans
+        ans.append(prefix[-2])
+
+        return ans
