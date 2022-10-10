@@ -1,0 +1,26 @@
+class Solution:
+    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+        
+        start =  dict()
+        end = dict()
+        
+        for x in range(len(trips)):
+            start[trips[x][1]] = start.get(trips[x][1],0) + trips[x][0]
+            
+            
+           
+            end[trips[x][2]] = end.get(trips[x][2],0)-(trips[x][0])
+        
+        i = 0
+        sum = 0
+        
+        
+        while True:
+            sum+= start.get(i,0) + end.get(i,0)
+            if sum > capacity:
+                return False
+            if i > 1001:
+                return True
+            i+=1
+
+        return True
