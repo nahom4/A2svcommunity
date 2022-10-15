@@ -1,0 +1,20 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        #prepare dictionary
+        
+        
+        lis = []
+        for i,x  in enumerate(points):
+            val = (x[0])**2 + (x[1])**2
+            lis.append((val,i))
+
+        lis.sort()
+        result= []
+        print(lis,'lis')
+        for x in range(k):
+            m,i = lis[x]
+            result.append(points[i])
+
+
+
+        return result
