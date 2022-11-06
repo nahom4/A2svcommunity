@@ -1,0 +1,16 @@
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+        changed.sort()
+        res = []
+        temp = []
+        for x in changed:
+            if temp and temp[0]*2 == x:
+                res.append(temp[0])
+                temp.remove(temp[0])
+
+            else:
+                temp.append(x)
+        if not temp:
+            return res
+        else:
+            return []
