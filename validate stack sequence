@@ -1,0 +1,24 @@
+class Solution:
+    def validateStackSequences(self, pushed, popped) :
+        # The edge case is when we try to pop an element below a given element
+        # when already an element above it has been poped
+        # i think we can just follow the mechanism it self that is let us just
+        # try to follow the mechanism
+        stack1 = []
+        for x in range(len(pushed) * 2 + 1):
+            
+
+            if stack1:
+
+                while stack1 and popped and stack1[-1] == popped[0]:
+                    stack1.pop()
+                    popped.remove(popped[0])
+
+                    
+            if x < len(pushed):
+                stack1.append(pushed[x])
+            
+        if len(stack1) > 0:
+            return False
+        else:
+            return True
