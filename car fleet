@@ -1,0 +1,23 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        #prepare a time table
+        time = []
+        for x in range(len(speed)):
+            t = (target-position[x])/speed[x]
+            time.append([position[x],t])
+        time.sort(reverse=True)
+        count=0
+        while len(time)>1:
+            
+
+            if len(time)>1 and time[1][1] <= time[0][1]:
+                time[1][1]= time[0][1]
+                time.remove(time[0])
+                
+                continue
+            else:
+            
+                  time.remove(time[0])
+
+                  count+=1
+        return count+1
