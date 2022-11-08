@@ -1,0 +1,40 @@
+class Solution:
+    def threeSumMulti(self, arr: List[int], target: int) -> int:
+        #this problem requires 3 sum solution with a little bit of tweek
+        md = 10**9 + 7
+
+        dic =  Counter(arr)
+        rp = sorted(dic)
+     
+
+        #let's perform 3 sum
+        r= len(rp)-1
+        final = 0
+        for y in range(len(rp)):
+            l=y
+            r= len(rp)-1
+            s = target-rp[y]
+            while l<=r:
+            
+                sm = rp[l]+rp[r]
+        
+                
+                if sm == s:
+                    
+                  
+                    if y<l<r:
+                        final+=dic[rp[y]]*dic[rp[l]]*dic[rp[r]]
+                    elif y==l<r:
+                        final+=dic[rp[y]]*(dic[rp[l]]-1)*dic[rp[r]]/2
+                    elif y<l==r:
+                        final+=dic[rp[y]]*dic[rp[l]]*(dic[rp[r]]-1)/2
+                    else:
+                        final+=dic[rp[y]]*(dic[rp[l]]-1)*(dic[rp[r]]-2)/6
+
+                    l+=1
+                    r-=1
+                elif sm<s:
+                    l+=1
+                else:
+                    r-=1
+        return int(final%md)
