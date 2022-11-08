@@ -1,0 +1,17 @@
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+        #always think out of the box when a problem doesn't make sense start
+        #looking at it from a diffrent perspective for this questions if we start
+        #analysing from behind it becomes significantly esier
+        ls = [0]*len(questions)
+        n = len(questions)-1
+        ls[len(questions)-1]= questions[len(questions)-1][0]
+        for x in range(len(questions)-2,-1,-1):
+            #we can either solve of skip a problem
+            if x+questions[x][1]+1 <len(questions):
+                ls[x] = max((questions[x][0] + ls[x+questions[x][1]+1]),ls[x+1])
+
+            else:
+                
+                ls[x] = max((questions[x][0]),ls[x+1])
+        return ls[0]
