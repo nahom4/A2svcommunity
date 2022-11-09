@@ -1,0 +1,25 @@
+class Solution:
+    def containsNearbyDuplicate(self, nums, k):
+
+        # sliding window with a dictionary
+        # lets make it simple and prepare hash table first for k first elements of nums
+        dic = dict()
+
+        start = 0
+        for x in range(0, len(nums)):
+            if x <= k:
+                dic[nums[x]] = dic.get(nums[x], 0) + 1
+                if dic[nums[x]] > 1:
+                    return True
+
+
+            elif x > k-1:
+                print(dic[nums[start]],'t')
+                print(nums[x])
+                dic[nums[start]]=dic[nums[start]]-1
+                dic[nums[x]] = dic.get(nums[x], 0) + 1
+                if dic[nums[x]] > 1:
+                    return True
+                start += 1
+               
+        return False
