@@ -1,0 +1,19 @@
+class Solution:
+    def minIncrementForUnique(self, nums: List[int]) -> int:
+        #first let's sort the array
+        #and then change it in to an increasing array while keeping track of the number of 
+        #additions
+        nums.sort()
+        change = 0
+        for x in range(1,len(nums)):
+            val = nums[x]-nums[x-1]
+            if val == 0:
+                nums[x] = nums[x]+1
+                change += 1
+            elif val <0:
+                tw = -1 *(val) +1
+                change+= tw
+                nums[x] +=tw
+            else:
+                pass
+        return change
