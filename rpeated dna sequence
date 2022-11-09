@@ -1,0 +1,15 @@
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        #the problem is not as expected so just use a dictionary to store the
+        #sub strings and check if duplicates occur
+
+        #generate substring
+        dic = {}
+        st = set()
+        for x in range(len(s)-10+1):
+            dic[s[x:x+10]] = dic.get(s[x:x+10],0) +1
+            if dic[s[x:x+10]] >1:
+                st.add(s[x:x+10])
+       
+        ls = list(st)
+        return ls
