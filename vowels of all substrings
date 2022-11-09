@@ -1,0 +1,28 @@
+class Solution:
+    def countVowels(self, word: str) -> int:
+        #use prefix sum
+        pre = [0]*len(word)
+        for x in range(len(word)):
+            if word[x] in ['a','e','i','o','u']:
+                if pre:
+                    pre[x] = pre[x-1]+1
+                else:
+                    pre[x] = 1
+            else:
+                pre[x] = pre[x-1]
+        print(pre)
+        #first find total and then we will substarct some value to get the final result
+        total = 0
+        for x in pre:
+            total+=x
+    
+        val = total - pre[0]*len(word)
+        ls=[total,val]
+        for j in range(1,len(pre)):
+            res = ls[-1] - (pre[j]-pre[j-1])*(len(pre)-(j))
+            ls.append(res)
+        print(ls)
+        final = 0
+        for x in ls:
+            final+=x
+        return final
