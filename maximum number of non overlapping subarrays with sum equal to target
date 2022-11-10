@@ -1,0 +1,22 @@
+class Solution:
+    def maxNonOverlapping(self, nums: List[int], target: int) -> int:
+        #since it is non overlapping it is just going to be a linear traversal
+        #prepare prefix sum
+        #negative create problems so let's get rid of them
+        #let's find the most negative element
+    
+        st =  set()
+        st.add(0)
+        count = 0
+        sm = 0
+        for x in nums:
+            sm+=x
+            if sm - target in st:
+                count += 1
+                st = set()
+                st.add(0)
+                sm =0
+            else:
+                st.add(sm)
+
+        return count
