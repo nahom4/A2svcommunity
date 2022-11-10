@@ -1,0 +1,33 @@
+class Solution:
+    def numOfSubarrays(self, arr):
+        #let's create a prefix sum
+        ls = []
+        md = 10**9 + 7
+        for x in arr:
+            if ls:
+                ls.append(ls[-1]+x)
+            else:
+                ls.append(x)
+        #let's count odd
+        
+        count = 0
+        for y in ls:
+            if y%2!=0:
+                count+=1
+        total = count
+        res = 0
+        
+        for m in range(len(arr)-1):
+            #next set of sub arrays
+            if arr[m]%2 == 0:    #[1,3,5],[1, 4, 9]
+
+                total+=count
+            else:
+                
+                res = len(arr)-m-1-(count-1)
+                
+            
+                count = res
+                total+=res
+
+        return total%md
