@@ -1,0 +1,26 @@
+class Solution:
+    #this is a helper functions that is used to calculate the number of sub arrays with sum at
+    #most m
+    def check(self,nums,m):
+        start= 0
+        right = 0
+        sm = 0
+        res = 0
+        if m < 0:
+            return 0
+
+     
+        while start < len(nums)  and right < len(nums):
+            sm+=nums[right]
+            while sm > m and start <len(nums):
+                sm-=nums[start]
+                start+=1
+            res+=right-start+1
+            right+=1
+        return res
+
+
+
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        return self.check(nums,goal)-self.check(nums,goal-1)
+       
