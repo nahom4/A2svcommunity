@@ -1,0 +1,36 @@
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        #insert x in to the array
+        st = False
+        for i,y  in enumerate(arr):
+            if  y>=x:
+                st = True
+                arr.insert(i,x)
+                break
+        if not st:
+            arr.append(x)
+            i=len(arr)-1
+        # i is our index
+        num = []
+        #two pointers
+        v = i+1
+        w = i-1
+        if len(arr) == 1:
+            return arr
+        for x in range(k):
+            if w>=0 and v < len(arr):
+                if abs(arr[v] - arr[i]) < abs(arr[w] - arr[i]):
+                    num.append(arr[v])
+                    v+=1
+                else:
+                    num.append(arr[w])
+                    w-=1
+            else:
+                if w <0:
+                    if v<len(arr):
+                         num.append(arr[v])
+                         v+=1
+                else:
+                    if w>=0:
+                         num.append(arr[w])
+                         w-=1
