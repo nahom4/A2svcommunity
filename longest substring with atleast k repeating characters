@@ -1,0 +1,26 @@
+
+class Solution:
+    #lets recurse
+    def checker(self,arr,k,mp):
+        
+
+       
+        for x in range(len(arr)):
+            if mp[arr[x]]<k:
+                ctf = Counter(arr[x+1:])
+                val =self.checker(arr[x+1:],k,ctf)
+                ct = Counter(arr[:x])
+                val2 =self.checker(arr[:x],k,ct)
+                result = max(val,val2)
+    
+                return result 
+            else:
+                pass
+               
+        return len(arr)
+    def longestSubstring(self, s: str, k: int) -> int:
+        #let's devide the string in to parts using different maps
+        ls = list(s)
+        ct = Counter(ls)
+        return self.checker(ls,k,ct)
+        
