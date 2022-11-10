@@ -1,0 +1,21 @@
+import math
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        #let's try sliding windowna approach
+        #since max averafe corresponds with max sum let's find max sum and return it's
+        #average over k
+        total = 0
+        start = 0
+        mx = -math.inf
+        if len(nums) == k:
+            return sum(nums)/k
+        for x in range(len(nums)):
+            if x >= k:
+                mx = max(mx, total)
+                total-=nums[start]
+                total+=nums[x]
+                
+                mx = max(mx,total)
+                start+=1
+            else:
+                total += nums[x]
